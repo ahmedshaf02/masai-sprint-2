@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div id="heading">
+        <h1>Tic Tac Toe </h1>
+        <p>A fun game with two player</p>
+        <h4 id="player">Let's Start</h4>
+    </div>
+    <div class="board">
+        <table>
+            <tr>
+                <td class="col" id="r1" onclick="printVal('1')"></td>
+                <td class="col" id="r2" onclick="printVal('2')"></td>
+                <td class="col" id="r3" onclick="printVal('3')"></td>
+            </tr>
+            <tr>
+                <td class="col" id="r4" onclick="printVal('4')"></td>
+                <td class="col" id="r5" onclick="printVal('5')"></td>
+                <td class="col" id="r6" onclick="printVal('6')"></td>
+            </tr>
+            <tr>
+                <td class="col" id="r7" onclick="printVal('7')"></td>
+                <td class="col" id="r8" onclick="printVal('8')"></td>
+                <td class="col" id="r9" onclick="printVal('9')"></td>
+            </tr>
+        </table>
+        <button onclick="reset()">Reset</button>
+    </div>
+    
+
+    
+<script src="script.js">
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+
+ body{
+    background-color: black;
+    color: rgb(246, 245, 245);
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#heading{
+    text-align: center;
+}
+#heading h1{
+    font-size: 40px;
+}
+.board{
+    width: 310px;
+    height: 310px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    /* border: 1px solid rgb(245, 239, 239); */
+    text-align: center;
+}
+td{
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgb(172, 157, 22);
+    border-radius: 4px;
+    color: rgb(245, 245, 245);
+    text-align: center;
+    font-size: 50px;
+}
+td:hover{
+    background-color: rgb(24, 21, 21);
+}
+button{
+    cursor: pointer;
+    padding: 10px 24px;
+    font-size: 18px;
+    margin-top: 10px;
+    border: 2px solid white;
+    border-radius: 4px;
+    background-color: transparent;
+    outline: none;
+    color: white;
+
+}
