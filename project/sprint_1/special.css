@@ -1,0 +1,65 @@
+
+  
+        body{
+            background-image: linear-gradient(to right,black,black, #27272c,black);
+            font-family: cursive;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .fbox{
+            display: flex;
+        }
+        .navbar>a{
+            text-decoration: none;
+            display: inline-block;
+            color: white;
+            padding: 10px 14px;
+            font-size: 20px;
+            transition:font-size 1s;
+        }
+        .navbar>a:hover{
+            border: 2px solid white;
+            border-radius: 5px;
+            font-size: 22px;
+
+        }
+        .logo{
+            width: 100px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin: 22px 10px 10px 10px;
+            
+        }
+        div > h1{
+            font-size: 40px;
+        }
+        .grid-box{
+            display: grid;
+            grid-template-columns: repeat(6,1fr);
+            grid-auto-rows: minmax(100px,auto);
+            grid-gap:10px;
+        }   
+        .grid-box>div{
+            background-color: rgb(2, 2, 42);
+            padding: 10px;   
+        }
+        .cat-img{
+            width: 100px;
+        }
+        .cat-img:hover{
+            width: 100%;
+        }
+        .grid-box1{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-auto-rows: minmax(200px,auto);
+            grid-gap:40px;
+        }
+        .grid-box1>div{
+            padding: 20px;
+            background-color: tomato;
+        }
+        .guest{
+            width: 300px;
+        }

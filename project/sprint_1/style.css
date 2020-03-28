@@ -1,0 +1,63 @@
+
+div > img{ 
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border: 2px solid aqua;
+    position: relative;
+    animation-name: catmove;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+   
+ }
+ @keyframes catmove{
+     0%{left: 0px; top:0px;border: 2px solid black;}
+     25%{left: 200px; top: 0px; border: 2px solid rgb(43, 246, 246);}
+     50%{left: 200px; top: 200px;border: 2px solid coral;}
+     75%{left: 0px; top: 200px;border: 2px solid dodgerblue;}
+     100%{left: 0px; top: 0px;border: 2px solid black;} 
+ }
+ body{
+     background-image: url("resources/cat4.jpg");
+     background-repeat: no-repeat;
+     background-size:cover;
+     background-position: center center;
+     background-attachment: fixed;
+     
+
+ }
+.div{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color:white;
+    text-align: center;
+    font-family: cursive;
+}
+.div>h1{
+    font-size: 68px;
+}
+.btn{
+    background-color: transparent;
+    border: 2px solid white;
+    font-size: 24px;
+    font-family: cursive;
+    color: white;
+    width: 200px;
+    padding: 20px;
+    border-radius: 40px;
+    transition: width 1s;
+}
+.btn:hover{
+    background-color: black;
+    width: 260px;
+    border: 2px solid white;
+}
+@media (max-width: 700px){
+
+ div>img{
+     display: none;
+ }
+}

@@ -1,0 +1,116 @@
+
+ body{
+    background-image: linear-gradient(to right,black,black, #27272c,black);
+    font-family: cursive;
+    color: white;
+}
+.fbox{
+    display: flex;
+}
+.navbar>a{
+    text-decoration: none;
+    display: inline-block;
+    color: white;
+    padding: 10px 14px;
+    font-size: 20px;
+    transition:font-size 1s;
+}
+.navbar>a:hover{
+    border: 2px solid white;
+    border-radius: 5px;
+    font-size: 22px;
+
+}
+.logo{
+    width: 100px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin: 22px 10px 10px 10px;
+    
+}
+div > h1{
+    font-size: 40px;
+}
+.special{
+    width: 50%;
+    height: 160px;
+    background-color: #26262c;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-top: 10px;
+    padding-left: 10px;
+
+}
+#p1{
+    font-size: 18px;
+}
+
+.card{
+    width: 300px;
+    height: 400px;
+    margin: 10px;
+    background-color: #26262c;
+    border-radius: 5px ;
+    
+}
+.card img{
+    width: 300px;
+    height: 200px;
+    border-radius: 5px;
+}
+.margin-left{
+    margin-left: 10px;
+}
+.btn1{
+    color: white;
+    background-color: transparent;
+    font-family: cursive;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+.write{
+    float: left;
+    width: 30%;
+    margin: 10px;
+}
+.write img{
+    width: 300px;
+}
+.contact{
+    float: left;
+    width: 50%;
+    margin-left: 50px;
+}
+.form{
+    border: 2px solid white;
+    border-radius: 5px;
+    width: 400px;
+    height: 420px;
+    margin: 10px;
+    padding: 10px;
+    transition: width 1s;
+}
+.form:hover{
+    width: 540px;
+}
+input[type="text"]{
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 6px 0px;
+    margin: 10px 0px 10px 20px;
+    width: 200px;
+    color: white;
+    transition: width 1s;
+}
+input[type="text"]:hover{
+    width: 300px;
+}
+.mb{
+    margin-bottom: 20px;
+}
+.cont1{
+    margin-left: 100px;
+}

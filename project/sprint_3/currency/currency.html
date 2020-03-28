@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Currency Exchange</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.min.css">
+    <style>
+        /* custom css for background */
+        body{
+            background-image: url(c.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- heading with name -->
+    <div class="container-fluid">
+        <div class="row text-white">
+            <div class="col text-center">
+                <div>
+                       <h1 class="display-4"><b>Welcome to Currency Exchange</b></h1>
+                        <p class="lead"> <small>Real-time exchange rates for 154 world currencies provided <br/>
+                            Currency data delivered by currency exchange is sourced from top-level
+                             financial data providers, various commercial sources & banks</small></p>
+                </div>
+            </div>
+        </div>
+        <!-- amount from to conversion -->
+        <!-- some inline style for element because bootstrap should not override -->
+
+        <div class="container  text-white" style="background-color: rgba(0,0,0,0.4); border-radius: 10px;">
+            <div class="row m-5  rounded-lg">
+
+                <div class="col-12 col-lg-12 col-xl-3">
+                    <p style="font-size: 20px;"> Amount</p>
+                    <input id="amount" value="1" class="" style="padding: 8px; border-radius: 5px;border: none; outline: none; font-size: 20px;"/>
+                </div>
+
+                <div class="col-12 col-lg-6 col-xl-4">
+                    <p style="font-size: 20px;"> From</p>
+                    <div class="form-group">
+                        <select class="form-control-lg" id="select1">
+                          <option value="USD">USD - US Dollar</option>
+                          <option value="EUR">EUR - Euro</option>
+                          <option value="GBP">GBP - British Pound</option>
+                          <option value="INR">INR - Indian Rupees</option>
+                          <option value="HKD">HKD - Hong Kong Dollar</option>
+                          <option value="AUD">AUD - Australian Dollar</option>
+                          <option value="CAD">CAD - Canadian Dollar</option>
+                          <option value="SGD">SGD - Singapore Dollar</option>
+                          <option value="JPY">JPY - Japanese Yen</option>
+                          <option value="NZD">NZD - New Zealand Dollar</option>
+                        </select>
+                      </div>
+                </div>
+                
+                <div class="col-12 col-lg-6 col-xl-4">
+                    <p style="font-size: 20px;"> To</p>
+                    <div class="form-group ">
+                        <select class="form-control-lg" id="select2">
+                        <option value="INR">INR - Indian Rupees</option>
+                        <option value="USD">USD - US Dollar</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="GBP">GBP - British Pound</option>
+                        <option value="HKD">HKD - Hong Kong Dollar</option>
+                        <option value="AUD">AUD - Australian Dollar</option>
+                        <option value="CAD">CAD - Canadian Dollar</option>
+                        <option value="SGD">SGD - Singapore Dollar</option>
+                        <option value="JPY">JPY - Japanese Yen</option>
+                        <option value="NZD">NZD - New Zealand Dollar</option>
+                        </select>
+                      </div>
+                </div>
+
+                <!-- value display -->
+                <div class="col-6 col-lg-6 col-xl-1">
+                    <button type="button" id="btn" class="btn btn-block text-white btn-primary btn-lg" style="font-size: 20px;margin-top: 48px;">&gt</button>
+                </div>
+            </div>
+            <!-- sample data to show -->
+            <div class="text-center">
+                <h1 id="base">1 USD =</h1>
+                <span id="value" class="display-2" style="font-weight: 400;">0.885776</span><span id="unit" class="h1"> EUR</span>
+                <h5 id="to">1 EUR = 1.12895 USD</h5>
+                <h5 id="from">1 USD = 0.885776 EUR</h5>
+                <span>Last updated: </span><span id="date"> 06/03/2020</span>
+                <p>All figures are live mid-market rates, which are not available to consumers and<br/>
+                     are for informational purposes only.</p>
+            </div>
+
+        </div>
+    <!-- api used for project -->
+    <p class="text-muted text-center">&copy Copy @ https://ratesapi.io/documentation/</p>
+    </div>
+
+
+
+
+
+<script src="currency.js">
+    
+</script>
+
+</body>
+<script src="bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</html>
