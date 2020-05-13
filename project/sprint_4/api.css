@@ -1,7 +1,9 @@
 
  body{
-    background-color: black;
+    background-image: linear-gradient( rgb(0, 0, 0),black,rgba(15, 15, 15, 0.904),rgba(1, 51, 51, 0.842),black);
     color: white;
+    height: 100vh;
+    
 }
 input{
     height: 60px;
