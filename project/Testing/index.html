@@ -233,13 +233,13 @@
                 console.log(id, update)
                 let state = this.model.state.todo
                 state = state.map(ele => {
-                        ele.id === Number(id) ? {...ele,
-                            title: update
-                        } : ele
-                    })
-                    // this.model.setState({...this.model.state,
-                    //     todo: state
-                    // })
+                    ele.id === Number(id) ? {...ele,
+                        title: update
+                    } : ele
+                })
+                this.model.setState({...this.model.state,
+                    todo: state
+                })
 
             }
         }
