@@ -1,77 +1,251 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    <div id="root">
+    <style>
+        #todo {
+            margin: 0 auto;
+            max-width: 400px;
+            background-color: rgb(31, 26, 26);
+            padding: 20px;
+            color: rgb(189, 189, 189);
+        }
         
+        li {
+            background-color: rgba(53, 46, 46, 0.856);
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="todo">
+
     </div>
     <script>
-        
-// MODEL
-// VIEW
-// CONTROLLER
+        // MODEL
+        // VIEW
+        // CONTROLLER
 
-    class Model {
-        constructor(){
-            this.state={
-                todo:[
-                    {
-                        id:1,
-                        title:"buy grocery",
-                        status:false
-                    },
-                    {
-                        id:1,
-                        title:"buy grocery",
-                        status:false
-                    },
-                    {
-                        id:1,
-                        title:"buy grocery",
-                        status:false
-                    },
-                ]
+
+        class Model {
+            constructor() {
+                this.state = this.loadData() || {
+                    todo: [{
+                        id: 1,
+                        title: "buy grocery",
+                        status: false
+                    }, {
+                        id: 2,
+                        title: "buy grocery",
+                        status: false
+                    }, {
+                        id: 3,
+                        title: "buy grocery",
+                        status: false
+                    }, ]
+                }
+
+            }
+
+            bindChangeList = callback => {
+                this.updateChange = callback
+            }
+
+            setState(newState) {
+                this.state = {
+                    ...newState
+                }
+                this.saveData(this.state)
+                console.log(this.state)
+                this.updateChange(this.state.todo)
+            }
+            loadData() {
+                return JSON.parse(localStorage.getItem("state")) || null
+            }
+
+            saveData(state) {
+                localStorage.setItem("state", JSON.stringify(state))
             }
         }
-    }
 
-    class View{
-        constructor(){
-            // app
-            this.app = document.getElementById("root")
-            // header
-            this.header = document.createEl("h1")
-            this.header.textContent = "MVC todo"
-            // input
-            this.input = this.createEl("input")
-            this.input.id = "input-id"
-            this.input.placeholder = "add todo"
-            this.input.type = "text"
-            // list of element
-            this.list = this.createEl("ul","list")
-            // button to add
-            this.button = this.createEl("button")
-            this.button.textContent = "Add Todo"
-
-            // append data
-            this.app.append(this.header,this.input,this.button,this.list)
-        }
-        createEl(tag,className){
-            const elem  = document.createElement(tag)
-            if(className){
-                elem.classList.add(className)
+        class View {
+            constructor() {
+                // app
+                this.app = document.getElementById("todo")
+                    // header
+                this.header = this.createEl("h1")
+                this.header.textContent = "MVC todo"
+                    // input
+                this.input = this.createEl("input")
+                this.input.id = "input-id"
+                this.input.placeholder = "add todo"
+                this.input.type = "text"
+                    // list of element
+                this.list = this.createEl("ul", "list")
+                    // button to add
+                this.button = this.createEl("button")
+                this.button.textContent = "Add Todo"
+                    // append data
+                this.app.append(this.header, this.input, this.button, this.list)
             }
-            return elem
-        }
-    }
 
-        const model = new Model()
-        const view = new View()
+
+            createEl(tag, className) {
+                const elem = document.createElement(tag)
+                if (className) {
+                    elem.classList.add(className)
+                }
+                return elem
+            }
+
+            renderDom(data) {
+                this.list.innerHTML = ""
+                if (data.length === 0) {
+                    let p = this.createEl("p")
+                    p.textContent = "list is empty"
+                    return this.list.append(p)
+
+                }
+                const fragment = document.createDocumentFragment()
+
+                data.forEach(ele => {
+                    const li = this.createEl("li")
+                    li.id = ele.id
+
+                    const p = this.createEl("p")
+                    p.textContent = ele.title
+                    p.contentEditable = true
+                    p.className = "edit"
+
+                    const checkbox = this.createEl("input")
+                    checkbox.type = "checkbox"
+                    checkbox.checked = ele.status
+
+                    if (ele.status) {
+                        p.setAttribute("style", "text-decoration:line-through")
+                    }
+
+                    const del = this.createEl("button")
+                    del.textContent = "delete"
+                    del.className = "delete"
+
+
+                    li.append(p, checkbox, del)
+                    fragment.append(li)
+                })
+
+                this.list.append(fragment)
+            }
+
+            bindAdd(handler) {
+                this.button.addEventListener("click", () => {
+                    handler(this.input.value)
+                })
+            }
+            bindDelete(handler) {
+                this.list.addEventListener("click", () => {
+                    if (event.target.className === "delete") {
+                        let id = event.target.parentElement.id
+                        handler(id)
+                    }
+                })
+            }
+            bindToggle(handler) {
+                this.list.addEventListener("click", () => {
+                    if (event.target.type === "checkbox") {
+
+                        let id = event.target.parentElement.id
+                        handler(id)
+                    }
+                })
+            }
+            bindEdit(handler) {
+                this.list.addEventListener("focusout", () => {
+                    if (event.target.className === "edit") {
+                        let id = event.target.parentElement.id
+                        handler(id, event.target.textContent)
+                    }
+                })
+            }
+
+
+
+        }
+
+        class Controller {
+            constructor(model, view) {
+                this.model = model;
+                this.view = view;
+                this.onChange(this.model.state.todo)
+                    // this.view.renderDom(this.model.state.todo)
+                    // binding
+                this.view.bindAdd(this.handleAdd)
+                this.model.bindChangeList(this.onChange)
+                this.view.bindDelete(this.handleDelete)
+                this.view.bindToggle(this.handleToggle)
+                this.view.bindEdit(this.handleEdit)
+            }
+
+            onChange = data => {
+                this.view.renderDom(data)
+            }
+
+            handleAdd = (value) => {
+                let state = this.model.state.todo
+                let payload = {
+                    id: Date.now(),
+                    title: value,
+                    status: false
+                }
+                this.model.setState({
+                    ...this.
+                    model.state,
+                    todo: [...state, payload]
+                })
+            }
+
+            handleDelete = (id) => {
+                console.log(id)
+                let state = this.model.state.todo
+                state = state.filter(ele => ele.id !== Number(id))
+                this.model.setState({...
+                    this.model.state,
+                    todo: state
+                })
+            }
+
+            handleToggle = id => {
+                // console.log(id)
+                let state = this.model.state.todo
+                state = state.map(ele => ele.id === Number(id) ? {...ele,
+                    status: !ele.status
+                } : ele)
+                this.model.setState({...this.model.state,
+                    todo: state
+                })
+            }
+
+            handleEdit = (id, update) => {
+                console.log(id, update)
+                let state = this.model.state.todo
+                state = state.map(ele => {
+                        ele.id === Number(id) ? {...ele,
+                            title: update
+                        } : ele
+                    })
+                    // this.model.setState({...this.model.state,
+                    //     todo: state
+                    // })
+
+            }
+        }
+
+        const app = new Controller(new Model(), new View())
     </script>
 </body>
+
 </html>
